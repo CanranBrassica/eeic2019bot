@@ -15,7 +15,7 @@ module.exports = () => Promise.try(() => {
 	return getWiki;
 }).then((wiki) => (
 	Promise.all([
-		wiki.getArticleAsync('EEIC2017/課題一覧'),
+		wiki.getArticleAsync('EEIC2018/課題一覧'),
 		redis.getAsync('notified_daily_reminder'),
 		redis.getAsync('notified_weekly_reminder'),
 	])
