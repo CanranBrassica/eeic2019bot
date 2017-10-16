@@ -21,5 +21,14 @@
     "nodemw": "^0.10.1",
     "redis": "^2.6.2",
     "request": "^2.79.0"
+  },
+  "config": {
+    "WIKI_PASSWORD": "",
+    "DAV_PASSWORD": "",
+    "REDIS_URL": "",
+    "SLACK_WEBHOOK": "",
+    "HEALTHCHECK_ASSIGNMENT_CRON_URL": "",
+    "HEALTHCHECK_ASSIGNMENT_NOTIFICATION_URL": "",
+    "HEALTHCHECK_ASSIGNMENT_WEEKLY_URL": ""
   }
 }
