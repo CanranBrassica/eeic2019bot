@@ -4,11 +4,13 @@
 
 以下、主にEEIC2018のためのREADME。
 
-## 仕組み
+## 導入
 
-Herokuで動いています。Heroku Schedularが毎時00分に `npm start` コマンドを実行します。
+nodeとredisをインストールしたあとこのリポジトリをcloneして、以下のコマンドを実行します。
 
-webやworkerのdynoは動いていません。完全無料です。
+    npm install -g npm-install-missing
+    npm-install-missing
+    npm start
 
 ## 課題お知らせちゃん (EEICたん)
 
