@@ -11,7 +11,7 @@ const wiki = new nodemw({
 Promise.promisifyAll(wiki);
 
 module.exports = new Promise((resolve, reject) => {
-	wiki.logInAsync('eeic2017bot', process.env.WIKI_PASSWORD).then(() => {
+	wiki.logInAsync('eeic2018bot', process.env.WIKI_PASSWORD).then(() => {
 		resolve(wiki);
 	}).catch((error) => {
 		reject(error);
