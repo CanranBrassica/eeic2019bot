@@ -1,7 +1,7 @@
 const assert = require('assert');
 const Promise = require('bluebird');
 const request = Promise.promisify(require("request"));
-const slack = require('./slack');
+const slack = require('./slack-server');
 const redis = require('./redis');
 const {currentMinute} = require('./time');
 
@@ -29,7 +29,6 @@ module.exports = () => Promise.try(() => {
 		slack.send({
 			text: 'dav.eeic.jp is now fixed! :raised_hands:',
 			channel: '#server',
-			username: 'dav-monitor',
 			attachments: [{
 				color: 'good',
 				title: 'Status OK',
@@ -50,27 +49,25 @@ module.exports = () => Promise.try(() => {
 			slack.send({
 				text: '<!channel> dav.eeic.jp seems down!',
 				channel: '#server',
-				username: 'dav-monitor',
 				attachments: [{
 					color: 'danger',
 					title: error.message,
 					text: error.stack,
 				}],
 			});
-		} else if (currentMinute === 0) {
+		}/* else if (currentMinute === 0) {
 			console.log('dav status: STILL DOWN (notify)');
 
 			slack.send({
 				text: 'dav.eeic.jp is still down!',
 				channel: '#server',
-				username: 'dav-monitor',
 				attachments: [{
 					color: 'danger',
 					title: error.message,
 					text: error.stack,
 				}],
 			});
-		} else {
+		} */else {
 			console.log('dav status: STILL DOWN');
 		}
 

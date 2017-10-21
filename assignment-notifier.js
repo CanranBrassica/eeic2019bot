@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const getUrls = require('get-urls');
 const https = require('https');
 
-const slack = require('./slack');
+const slack = require('./slack-assignment');
 const getWiki = require('./wiki');
 const redis = require('./redis');
 
@@ -142,6 +142,7 @@ module.exports = () => Promise.try(() => {
 			if (attachments.length > 0) {
 				slack.send({
 					text: '課題情報を更新しました!',
+					channel: '#assignment',
 					attachments,
 				});
 			}
@@ -185,6 +186,7 @@ module.exports = () => Promise.try(() => {
 			if (attachments.length > 0) {
 				slack.send({
 					text: '明日が期限の課題ですよ～',
+					channel: '#assignment',
 					attachments,
 				});
 			}
@@ -227,6 +229,7 @@ module.exports = () => Promise.try(() => {
 			if (attachments.length > 0) {
 				slack.send({
 					text: '来週の課題一覧です:notes:',
+					channel: '#assignment',
 					attachments: attachments.sort((a, b) => a.dueDateUnix - b.dueDateUnix),
 				});
 			}
