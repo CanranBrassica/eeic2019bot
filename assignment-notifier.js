@@ -93,7 +93,7 @@ module.exports = () => Promise.try(() => {
 
 	pushAssignment();
 
-	assert(assignments.length > 5);
+	//assert(assignments.length > 5);
 
 	return redis.saddAsync('temp', ...assignments.map(it => it.id)).then(() => (
 		Promise.all([

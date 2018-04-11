@@ -47,7 +47,7 @@ module.exports = () => Promise.try(() => {
 			console.log('dav status: WENT DOWN');
 
 			slack.send({
-				text: '<!channel> dav.eeic.jp seems down!',
+				text: 'dav.eeic.jp seems down!',
 				channel: '#server',
 				attachments: [{
 					color: 'danger',
