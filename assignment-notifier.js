@@ -36,8 +36,8 @@ module.exports = () => Promise.try(() => {
 		today.clone().startOf('week').subtract(1, 'week').day(6).hour(10) :
 		today.clone().startOf('week').day(6).hour(10);
 	console.log({
-		notifiedWeeklyReminder,
 		notifiedDailyReminder,
+		notifiedWeeklyReminder,
 		dailyReminderLastDue,
 		weeklyReminderLastDue,
 	});
@@ -46,9 +46,12 @@ module.exports = () => Promise.try(() => {
 
 	const pushAssignment = () => {
 		if (h2 !== null && h3 !== null && dueDate !== null && dueTime !== null) {
+			console.log(h2, h3, dueDate, dueTime, content.trim());
 			const urls = getUrls(content);
-			const imageUrl = urls.find(url => url.match(/(png|jpg|jpeg|bmp|gif)/));
-
+			let imageUrl;
+			if (urls.size > 0) {
+				imageUrl = urls.find(url => url.match(/(png|jpg|jpeg|bmp|gif)/));
+			}
 			assignments.push({
 				h2, h3, dueDate, dueTime,
 				content: content.trim(),
@@ -57,7 +60,8 @@ module.exports = () => Promise.try(() => {
 			});
 		}
 
-		dueDate = dueTime = null;
+		dueDate = null;
+		dueTime = null;
 		content = '';
 	};
 
@@ -93,7 +97,10 @@ module.exports = () => Promise.try(() => {
 
 	pushAssignment();
 
-	//assert(assignments.length > 5);
+	if (assignments.length == 0) {
+		console.log("There is no assignments.");
+		process.exit();
+	}
 
 	return redis.saddAsync('temp', ...assignments.map(it => it.id)).then(() => (
 		Promise.all([
