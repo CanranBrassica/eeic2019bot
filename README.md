@@ -1,8 +1,8 @@
-# EEIC2018 Bot
+# EEIC2019 Bot
 
-[EEIC](http://www.ee.t.u-tokyo.ac.jp/)2018のためのBotです。
+[EEIC](http://www.ee.t.u-tokyo.ac.jp/)2019のためのBotです。
 
-以下、主にEEIC2018のためのREADME。
+以下、主にEEIC2019のためのREADME。
 
 ## 導入
 
